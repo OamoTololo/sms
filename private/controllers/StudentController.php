@@ -5,10 +5,10 @@
  * @author      Oamogetswe Mgidi
  * @copyright   Copyright (c) NtwanaSosha
  */
-class controller
+class StudentController extends Controller
 {
-    public function __construct()
+    public function index($id = null)
     {
-
+        echo "This is a Student Controller " . $id;
     }
 }

@@ -5,10 +5,10 @@
  * @author      Oamogetswe Mgidi
  * @copyright   Copyright (c) NtwanaSosha
  */
-class studentController extends controller
+class Controller
 {
     public function __construct()
     {
-        echo 'This is a student controller';
+
     }
 }

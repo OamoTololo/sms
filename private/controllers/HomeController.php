@@ -5,10 +5,10 @@
  * @author      Oamogetswe Mgidi
  * @copyright   Copyright (c) NtwanaSosha
  */
-class homeController extends controller
+class HomeController extends Controller
 {
-    public function __construct()
+    public function index()
     {
-        echo "homeController";
+        echo "This is a Home controller";
     }
 }
