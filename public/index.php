@@ -1,10 +1,8 @@
 <?php
-include 'public/partials/header.php';
-?>
-<div>
-<?php require '../private/core/app.php'; ?>
-</div>
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+require '../private/core/autoload.php';
 
-<?php
-include 'public/partials/footer-links.php';
+$app = new app();
+
 ?>
