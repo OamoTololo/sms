@@ -8,8 +8,8 @@
 class App
 {
     protected $controller = 'HomeController'; // Default controller, can be changed dynamically
-    protected $method = 'index';   // Default method
-    protected $params = [];         // Default params
+    protected string $method = 'index';   // Default method
+    protected array $params = [];         // Default params
 
     public function __construct()
     {
