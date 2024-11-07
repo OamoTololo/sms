@@ -12,9 +12,9 @@ class Controller
         extract($data);
 
         if (file_exists('../private/views/' . $view . '.php')) {
-            return file_get_contents('../private/views/' . $view . '.php');
+            require'../private/views/' . $view . '.php';
         } else {
-            return file_get_contents('../private/views/404.php');
+            require'../private/views/404.php';
         }
     }
 }
