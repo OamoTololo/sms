@@ -1,8 +1,7 @@
 <?php
-
+$this->view('includes/Header');
 ?>
-<title>Page not found</title>
-
-<h1>Page Not Found</h1>
-</body>
-</html>
+    <h1>Page Not Found</h1>
+<?php
+$this->view('includes/Footer-links');
+?>

@@ -1,5 +1,5 @@
 <?php
-$this->view('includes/header');
+$this->view('includes/Header');
 ?>
     <title>Login</title>
     <div class="container-fluid">
@@ -17,5 +17,5 @@ $this->view('includes/header');
         </div>
     </div>
 <?php
-$this->view('includes/footer-links');
+$this->view('includes/Footer-links');
 ?>
