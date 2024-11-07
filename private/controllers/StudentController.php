@@ -9,6 +9,6 @@ class StudentController extends Controller
 {
     public function index($id = null)
     {
-        echo "This is a Student Controller " . $id;
+        echo $this->view('StudentView');
     }
 }
