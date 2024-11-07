@@ -11,3 +11,4 @@
     <link rel="stylesheet" href="assets/css/sms.css">
 </head>
 <body>
+    <div style="min-width: 350px;">
