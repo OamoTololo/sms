@@ -9,6 +9,6 @@ class StudentController extends Controller
 {
     public function index($id = null)
     {
-        echo $this->view('StudentView');
+        $this->view('StudentView');
     }
 }

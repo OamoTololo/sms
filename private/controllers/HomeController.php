@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        echo $this->view('HomeView', []);
+        $this->view('HomeView');
     }
 }

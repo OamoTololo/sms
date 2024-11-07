@@ -8,11 +8,11 @@
 
 (function (factory) {
 	if (typeof define === "function" && define.amd) {
-		define(['web/js/jquery'], function ($) {
+		define(['public/web/js/jquery'], function ($) {
 			return factory($);
 		});
 	} else if (typeof module === "object" && typeof module.exports === "object") {
-		exports = factory(require('web/js/jquery'));
+		exports = factory(require('public/web/js/jquery'));
 	} else {
 		factory(jQuery);
 	}
