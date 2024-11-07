@@ -10,10 +10,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                    <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Users</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Tests</a>
@@ -23,7 +26,7 @@
                         User
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="ProfileController">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Dashboard</a></li>
                         <div class="dropdown-divider"></div>
                         <li><a class="dropdown-item" href="#">Logout</a></li>
