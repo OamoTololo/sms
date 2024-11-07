@@ -96,6 +96,11 @@
     transition: .5s;
 }
 
+.nav ul li a:hover {
+    background: grey;
+    color: white !important;
+}
+
 .sticky-top.navbar-dark .navbar-nav .nav-link {
     padding: 20px 0;
 }
