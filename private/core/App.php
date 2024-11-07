@@ -20,7 +20,7 @@ class App
             $this->controller = ucfirst($URL[0]);  // Capitalize the first letter of the controller name
             unset($URL[0]);  // Remove the controller part from the URL
         } else {
-            die("Controller {$this->controller} does not exist.");
+            die("Controller $URL[0] does not exist.");
         }
 
         // Require the controller file
