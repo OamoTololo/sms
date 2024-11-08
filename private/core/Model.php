@@ -37,4 +37,47 @@ class Model extends SmsDB
             throw new Exception($e->getMessage());
         }
     }
+
+    public function insert($data)
+    {
+        try {
+            $keys = array_keys($data);
+            $columns = implode(",", $keys);
+            $values = implode(",:", $keys);
+
+            $query = "INSERT INTO $this->table ($columns) VALUES (:$values)";
+
+            return $this->query($query, $data);
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
+    public function update($id, $data)
+    {
+        try {
+            $column = addslashes($data);
+            $query = "INSERT INTO $this->table ($column) VALUES ($column)";
+
+            return $this->query($query, [
+                ":value" => $value
+            ]);
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
+    public function delete($Id)
+    {
+        try {
+            $column = addslashes($data);
+            $query = "INSERT INTO $this->table ($column) VALUES ($column)";
+
+            return $this->query($query, [
+                ":value" => $value
+            ]);
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
 }
