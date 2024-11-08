@@ -56,12 +56,18 @@ class Model extends SmsDB
     public function update($id, $data)
     {
         try {
-            $column = addslashes($data);
-            $query = "INSERT INTO $this->table ($column) VALUES ($column)";
+            $data['user_id'] = $id;
+            $str = "";
 
-            return $this->query($query, [
-                ":value" => $value
-            ]);
+            foreach ($data as $key => $value) {
+                $str .= "$key = :$key, ";
+            }
+
+            $str = rtrim($str, ", ");
+
+            $query = "UPDATE $this->table SET $str WHERE user_id = :user_id LIMIT 1";
+
+            return $this->query($query, $data);
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());
         }

@@ -12,6 +12,7 @@ class HomeController extends Controller
         //$user = new User;
         try {
             $user = new User;
+
             $data = $user->findAll();
 
             $this->view('HomeView', ['rows' => $data]);
