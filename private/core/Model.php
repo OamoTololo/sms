@@ -76,12 +76,10 @@ class Model extends SmsDB
     public function delete($Id)
     {
         try {
-            $column = addslashes($data);
-            $query = "INSERT INTO $this->table ($column) VALUES ($column)";
+            $query = "DELETE FROM $this->table WHERE user_id = :user_id LIMIT 1";
+            $data['user_id'] = $Id;
 
-            return $this->query($query, [
-                ":value" => $value
-            ]);
+            return $this->query($query, $data);
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());
         }

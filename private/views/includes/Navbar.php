@@ -13,24 +13,26 @@
                     <a class="nav-link active" aria-current="page" href="HomeController">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Classes</a>
+                    <a class="nav-link" href="#">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Users</a>
+                    <a class="nav-link" href="#">Classes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Tests</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         User
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="ProfileController">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="ProfileController">Profile</a>
+                        <a class="dropdown-item" href="HomeController">Dashboard</a>
                         <div class="dropdown-divider"></div>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
                 </li>
             </ul>
         </div>
