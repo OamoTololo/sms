@@ -18,23 +18,34 @@ class SmsDB {
 
     public function query($query, $data = [], $dataType = "object")
     {
-        $conn = $this->connection();
-        $result = $conn->prepare($query);
+        try {
+            $conn = $this->connection();
+            $result = $conn->prepare($query);
 
-        if ($result) {
-            $check = $result->execute($data);
-            if ($check) {
-                if ($dataType == "object") {
-                    $data = $result->fetch(PDO::FETCH_OBJ);
+            if ($result) {
+                $check = $result->execute($data);
+                if ($check) {
+                    if ($dataType == "object") {
+                        // Fetch all rows as objects
+                        return $result->fetchAll(PDO::FETCH_OBJ);
+                    } else {
+                        // Fetch all rows as associative arrays
+                        return $result->fetchAll(PDO::FETCH_ASSOC);
+                    }
                 } else {
-                    $data = $result->fetchAll(PDO::FETCH_ASSOC);
+                    // Log error if needed
+                    error_log("Query execution failed: " . implode(", ", $result->errorInfo()));
                 }
-
-                return $data;
+            } else {
+                error_log("Failed to prepare query: " . implode(", ", $conn->errorInfo()));
             }
-        }
 
-        return [];
+            // Return empty array if query fails
+            return [];
+        } catch (PDOException $e) {
+            error_log("Failed to prepare query: " . $e->getMessage());
+            die();
+        }
     }
 
 }

@@ -9,10 +9,14 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $user = new User;
+        //$user = new User;
+        try {
+            $user = new User;
+            $data = $user->findAll();
 
-        $data = $user->findAll();
-
-        $this->view('HomeView', ['rows' => $data]);
+            $this->view('HomeView', ['rows' => $data]);
+        } catch (Exception $e) {
+            $this->view('HomeView', ['error' => $e->getMessage()]);
+        }
     }
 }
