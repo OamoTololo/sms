@@ -4,13 +4,24 @@ class User extends Model
 {
     protected $table = "USERS";
 
+    protected array $allowedColumns = [
+        'name',
+        'surname',
+        'username',
+        'email',
+        'password',
+        'gender',
+        'role'
+    ];
+    protected array $beforeInsert = ['make_url_address', 'make_school_id', 'hash_password'];
+
     public function validate($data)
     {
         $this->errors = [];
 
         if (!empty($data['name']) || !empty($data['surname']) || !empty($data['username']) || !empty($data['date']) ||
             !empty($data['url_address']) || !empty($data['gender']) || !empty($data['email']) || !empty($data['role']) ||
-            !empty($data['password']) || !empty($data['retyped_password'])) {
+            !empty($data['password'])) {
                 if (!preg_match("/^[a-zA-Z]+$/", $data['name']) || !preg_match("/^[a-zA-Z]+$/", $data['surname'])) {
                     $this->errors['name'] = "Only characters are allowed! No numbers";
                     $this->errors['surname'] = "Only characters are allowed! No numbers";
@@ -44,9 +55,6 @@ class User extends Model
                     $this->errors['password'] = "Minimum of 8 characters, At least one uppercase letter, at least one lowercase letter and a number and a special character!";
                 }
 
-                if ($data['password'] != $data['retyped_password']) {
-                    $this->errors['password'] = "Passwords do not match";
-                }
                 if (count($this->errors) == 0) {
                     return true;
                 }
@@ -61,5 +69,21 @@ class User extends Model
     {
         $d = DateTime::createFromFormat($format, $date);
         return $d && $d->format($format) == $date;
+    }
+
+    public function make_url_address($data)
+    {
+        return $data;
+    }
+    public function make_school_id($data)
+    {
+        return $data;
+    }
+
+    public function hash_password($data)
+    {
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        return $data;
     }
 }
