@@ -41,8 +41,8 @@ class User extends Model
                 $this->errors['role'] = "Please select a valid role!";
             }
 
-            if (!preg_match("/^[a-zA-Z0-9]+$/", $data['password'])) {
-                $this->errors['password'] = "Only letters and numbers are allowed";
+            if (!preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $data['password'])) {
+                $this->errors['password'] = "Minimum of 8 characters, At least one uppercase letter, at least one lowercase letter and a number and a special character!";
             }
 
             if ($data['password'] != $data['retyped_password']) {
