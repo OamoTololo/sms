@@ -9,10 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $user = $this->loadModel('User');
+        $user = new User;
 
         $data = $user->findAll();
-        //$data = $user->where('name', 'Oamogetswe');
+
         $this->view('HomeView', ['rows' => $data]);
     }
 }

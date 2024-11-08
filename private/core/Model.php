@@ -2,11 +2,13 @@
 
 class Model extends SmsDB
 {
-    protected $table = "USERS";
     public function __construct()
     {
-
+        if (!property_exists($this, "table")) {
+            $this->table = strtoupper($this->table) . strtoupper("S");
+        }
     }
+
     public function where($column, $value)
     {
         $column = addslashes($column);
