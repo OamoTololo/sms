@@ -9,7 +9,7 @@ class RegisterController extends Controller
             $user = new User;
 
             if ($user->validate($_POST)) {
-                $this->redirect('auth/LoginView');
+                $this->redirect('/LoginController');
             } else {
                 $errors = $user->errors;
             }

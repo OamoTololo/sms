@@ -1,6 +1,8 @@
 <?php
 $this->view('includes/Header');
+print_r($errors);
 ?>
+
     <div class="container-fluid">
         <form action="" method="post">
             <div class="p-5 mt-5 mx-auto border border-dark shadow rounded" style="width: 100%; max-width: 340px;">
@@ -12,7 +14,6 @@ $this->view('includes/Header');
                 <input class="my-2 form-control" type="text" name="username" placeholder="Username" autocomplete="off">
                 <input class="my-2 form-control" type="date" name="date" placeholder="Email" autocomplete="off">
                 <input class="my-2 form-control" type="text" name="url_address" placeholder="URL Address" autocomplete="off">
-                <input class="my-2 form-control" type="text" name="gender" placeholder="Gender" autocomplete="off">
                 <input class="my-2 form-control" type="email" name="email" placeholder="Email" autocomplete="off">
                 <select class="my-2 form-control" name="gender" id="gender">
                     <option class="text-center" value="">Gender</option>

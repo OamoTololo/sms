@@ -30,7 +30,7 @@ class Controller
 
     protected function redirect($location)
     {
-        header('Location:' . '/' . trim($location, "/"));
+        header('Location:' . trim($location, "/"));
         die();
     }
 }
