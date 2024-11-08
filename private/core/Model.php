@@ -2,6 +2,7 @@
 
 class Model extends SmsDB
 {
+    public array $errors = [];
     public function __construct()
     {
         try {
