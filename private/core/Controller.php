@@ -7,7 +7,7 @@
  */
 class Controller
 {
-    public function view($view, $data = [])
+    protected function view($view, $data = [])
     {
         extract($data);
 
@@ -18,7 +18,7 @@ class Controller
         }
     }
 
-    public function loadModel($model): Model
+    protected function loadModel($model): Model
     {
         if (file_exists('../private/models/' . ucfirst($model) . '.php')) {
             require'../private/models/' . ucfirst($model) . '.php';
@@ -26,5 +26,11 @@ class Controller
         }
 
         return false;
+    }
+
+    protected function redirect($location)
+    {
+        header('Location:' . '/' . trim($location, "/"));
+        die();
     }
 }
