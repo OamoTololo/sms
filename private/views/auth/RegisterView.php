@@ -67,9 +67,9 @@ $this->view('includes/Header');
                    title="<?= isset($errors['password']) ? htmlspecialchars($errors['password']) : ''; ?>">
 
             <!-- Retyped Password Field -->
-            <input class="my-2 form-control <?= isset($errors['retyped_password']) ? 'is-invalid has-tooltip' : ''; ?>"
-                   value="<?= htmlspecialchars(getVar('retyped_password')); ?>" type="password" name="retyped_password" placeholder="Retype Password"
-                   title="<?= isset($errors['retyped_password']) ? htmlspecialchars($errors['retyped_password']) : ''; ?>">
+<!--            <input class="my-2 form-control --><?php //= isset($errors['retyped_password']) ? 'is-invalid has-tooltip' : ''; ?><!--"-->
+<!--                   value="--><?php //= htmlspecialchars(getVar('retyped_password')); ?><!--" type="password" name="retyped_password" placeholder="Retype Password"-->
+<!--                   title="--><?php //= isset($errors['retyped_password']) ? htmlspecialchars($errors['retyped_password']) : ''; ?><!--">-->
 
             <br>
             <button class="btn btn-success w-100">Register</button>
