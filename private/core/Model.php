@@ -7,7 +7,6 @@ class Model extends SmsDB
     {
 
     }
-
     public function where($column, $value)
     {
         $query = "SELECT * FROM $this->table WHERE :column = :value";
