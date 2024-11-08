@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Config.php';
+require_once 'Helpers.php';
 require_once 'Controller.php';
 require_once 'SmsDB.php';
 require_once 'Model.php';
