@@ -1,26 +1,24 @@
 <?php
 
 class SmsDB {
-    private $host = "localhost:3306";
-    private $username = "root";
-    private $password = "O@mO23352433";
-    private $database = "smsDB";
-
-    private function connect()
+    protected function connection()
     {
-        $conn = new PDO("mysql:host=$this->host;dbname=$this->database", $this->username, $this->password);
+        try {
+            $dbHost = 'localhost:3306';
+            $username = 'root';
+            $password = 'O@mO23352433';
+            $databaseName = 'smsDB';
 
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
+            return new PDO("mysql:host=$dbHost;dbname=$databaseName", $username, $password);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            die();
         }
-
-        return $conn;
     }
 
-    public function run($query, $data = [], $dataType = "object")
+    public function query($query, $data = [], $dataType = "object")
     {
-        $conn = $this->connect();
-
+        $conn = $this->connection();
         $result = $conn->prepare($query);
 
         if ($result) {
@@ -32,17 +30,11 @@ class SmsDB {
                     $data = $result->fetchAll(PDO::FETCH_ASSOC);
                 }
 
-                if (is_array($data) && count($data) > 0) {
-                    return $data;
-                }
+                return $data;
             }
         }
 
-        return false;
+        return [];
     }
 
-    public function query($conn)
-    {
-
-    }
 }

@@ -9,6 +9,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $this->view('HomeView');
+        $db = new SmsDB;
+
+        $data = $db->query("SELECT * FROM USERS");
+        $this->view('HomeView', ['rows' => $data]);
     }
 }
