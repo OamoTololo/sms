@@ -9,10 +9,17 @@ class Model extends SmsDB
     }
     public function where($column, $value)
     {
-        $query = "SELECT * FROM $this->table WHERE :column = :value";
+        $column = addslashes($column);
+        $query = "SELECT * FROM $this->table WHERE $column = :value";
 
         return $this->query($query, [
-            ":column" => $column, ":value" => $value
+            ":value" => $value
         ]);
+    }
+
+    public function findAll()
+    {
+        $query = "SELECT * FROM $this->table";
+        return $this->query($query);
     }
 }

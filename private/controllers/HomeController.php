@@ -9,9 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $db = new SmsDB;
+        $user = $this->loadModel('User');
 
-        $data = $db->query("SELECT * FROM USERS");
+        $data = $user->findAll();
+        //$data = $user->where('name', 'Oamogetswe');
         $this->view('HomeView', ['rows' => $data]);
     }
 }

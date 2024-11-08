@@ -17,4 +17,14 @@ class Controller
             require'../private/views/404.php';
         }
     }
+
+    public function loadModel($model): Model
+    {
+        if (file_exists('../private/models/' . ucfirst($model) . '.php')) {
+            require'../private/models/' . ucfirst($model) . '.php';
+            return $model = new $model();
+        }
+
+        return false;
+    }
 }
