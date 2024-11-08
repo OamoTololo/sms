@@ -42,6 +42,20 @@ class Model extends SmsDB
     public function insert($data)
     {
         try {
+            if (!property_exists($this, "allowedColumns")) {
+                foreach ($data as $key => $column) {
+                    if (!in_array($key, $this->allowedColumns)) {
+                        unset($data[$key]);
+                    }
+                }
+            }
+
+            if (!property_exists($this, "beforeInsert")) {
+                foreach ($this->beforeInsert as $function) {
+                    $data = $this->$function($data);
+                }
+            }
+
             $keys = array_keys($data);
             $columns = implode(",", $keys);
             $values = implode(",:", $keys);
