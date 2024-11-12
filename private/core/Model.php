@@ -42,7 +42,7 @@ class Model extends SmsDB
     public function insert($data)
     {
         try {
-            if (!property_exists($this, "allowedColumns")) {
+            if (property_exists($this, "allowedColumns")) {
                 foreach ($data as $key => $column) {
                     if (!in_array($key, $this->allowedColumns)) {
                         unset($data[$key]);
@@ -50,7 +50,7 @@ class Model extends SmsDB
                 }
             }
 
-            if (!property_exists($this, "beforeInsert")) {
+            if (property_exists($this, "beforeInsert")) {
                 foreach ($this->beforeInsert as $function) {
                     $data = $this->$function($data);
                 }
@@ -58,15 +58,24 @@ class Model extends SmsDB
 
             $keys = array_keys($data);
             $columns = implode(",", $keys);
-            $values = implode(",:", $keys);
+            $values = ":" . implode(",:", $keys);
 
-            $query = "INSERT INTO $this->table ($columns) VALUES (:$values)";
+            $query = "INSERT INTO $this->table ($columns) VALUES ($values)";
 
-            return $this->query($query, $data);
+            $result = $this->query($query, $data);
+
+            // Debugging output
+            if (!$result) {
+                error_log("Insert failed: " . print_r($this->errors, true));
+            }
+
+            return $result;
         } catch (PDOException $e) {
-            throw new Exception($e->getMessage());
+            error_log("Database error during insert: " . $e->getMessage());
+            throw new Exception("Error inserting data: " . $e->getMessage());
         }
     }
+
 
     public function update($id, $data)
     {
