@@ -29,11 +29,6 @@ $this->view('includes/Header');
                    type="date" value="<?= htmlspecialchars(getVar('date')); ?>" name="date" placeholder="Date" autocomplete="off"
                    title="<?= isset($errors['date']) ? htmlspecialchars($errors['date']) : ''; ?>">
 
-            <!-- URL Address Field -->
-            <input class="my-2 form-control <?= isset($errors['url_address']) ? 'is-invalid has-tooltip' : ''; ?>"
-                   value="<?= htmlspecialchars(getVar('url_address')); ?>" type="text" name="url_address" placeholder="URL Address" autocomplete="off"
-                   title="<?= isset($errors['url_address']) ? htmlspecialchars($errors['url_address']) : ''; ?>">
-
             <!-- Email Field -->
             <input class="my-2 form-control <?= isset($errors['email']) ? 'is-invalid has-tooltip' : ''; ?>"
                    value="<?= htmlspecialchars(getVar('email')); ?>" type="email" name="email" placeholder="Email" autocomplete="off"
@@ -66,10 +61,6 @@ $this->view('includes/Header');
                    value="<?= htmlspecialchars(getVar('password')); ?>" type="password" name="password" placeholder="Password"
                    title="<?= isset($errors['password']) ? htmlspecialchars($errors['password']) : ''; ?>">
 
-            <!-- Retyped Password Field -->
-<!--            <input class="my-2 form-control --><?php //= isset($errors['retyped_password']) ? 'is-invalid has-tooltip' : ''; ?><!--"-->
-<!--                   value="--><?php //= htmlspecialchars(getVar('retyped_password')); ?><!--" type="password" name="retyped_password" placeholder="Retype Password"-->
-<!--                   title="--><?php //= isset($errors['retyped_password']) ? htmlspecialchars($errors['retyped_password']) : ''; ?><!--">-->
 
             <br>
             <button class="btn btn-success w-100">Register</button>
