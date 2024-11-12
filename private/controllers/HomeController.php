@@ -11,6 +11,9 @@ class HomeController extends Controller
     {
         //$user = new User;
         try {
+            if (!Auth::loggedIn()) {
+                $this->redirect('/LoginController');
+            }
             $user = new User;
 
             $data = $user->findAll();
