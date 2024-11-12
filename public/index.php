@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+SESSION_START();
+
 require '../private/core/Autoload.php';
 
 $app = new App();
