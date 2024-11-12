@@ -8,12 +8,13 @@ class User extends Model
         'name',
         'surname',
         'username',
+        'date',
         'email',
         'password',
         'gender',
         'role'
     ];
-    protected array $beforeInsert = ['make_url_address', 'make_school_id', 'hash_password'];
+    protected array $beforeInsert = ['makeUrlAddress', 'makeSchoolId', 'hashPassword'];
 
     public function validate($data)
     {
@@ -71,19 +72,40 @@ class User extends Model
         return $d && $d->format($format) == $date;
     }
 
-    public function make_url_address($data)
+    public function makeUrlAddress($data)
     {
+        $data['url_address'] = $this->randomString(60);
+
         return $data;
     }
-    public function make_school_id($data)
+    public function makeSchoolId($data)
     {
+        if (!isset($_SESSION['USER']->school_id)) {
+            $data['school_id'] = $_SESSION['USER']->school_id;
+        }
+
         return $data;
     }
 
-    public function hash_password($data)
+    public function hashPassword($data)
     {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
         return $data;
+    }
+
+    private function randomString($length): string
+    {
+        $array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+            'o', 'p', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'M', 'N', 'O', 'P', 'R', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        $text = "";
+
+        for ($x = 0; $x < $length; $x++) {
+            $random = rand(0, 61);
+            $text .= $array[$random];
+        }
+
+        return $text;
     }
 }
