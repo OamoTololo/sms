@@ -2,13 +2,9 @@
 $this->view('includes/Header');
 $this->view('includes/Navbar');
 ?>
+<div class="container-fluid">
 
-    <div class="container-fluid">
-    </div>
-
-<?php
-
-?>
+</div>
 
 <?php
 $this->view('includes/Footer-links');
