@@ -18,7 +18,7 @@
                     <a class="nav-link" href="SchoolController">Schools</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="StaffController">Staff</a>
+                    <a class="nav-link" href="UsersController">Staff</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="StudentController">Students</a>
