@@ -14,7 +14,11 @@ class User extends Model
         'gender',
         'role'
     ];
-    protected array $beforeInsert = ['makeUrlAddress', 'makeSchoolId', 'hashPassword'];
+    protected array $beforeInsert = [
+        'makeUrlAddress',
+        'makeSchoolId',
+        'hashPassword'
+    ];
 
     public function validate($data)
     {
@@ -24,8 +28,7 @@ class User extends Model
             !empty($data['url_address']) || !empty($data['gender']) || !empty($data['email']) || !empty($data['role']) ||
             !empty($data['password'])) {
                 if (!preg_match("/^[a-zA-Z]+$/", $data['name']) || !preg_match("/^[a-zA-Z]+$/", $data['surname'])) {
-                    $this->errors['name'] = "Only characters are allowed! No numbers";
-                    $this->errors['surname'] = "Only characters are allowed! No numbers";
+                    $this->errors['warning'] = "Only characters are allowed! No numbers";
                 }
 
                 if (!preg_match("/^[a-zA-Z0-9]+$/", $data['username'])) {
@@ -44,6 +47,10 @@ class User extends Model
 
                 if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $this->errors['email'] = "Invalid email address";
+                }
+
+                if ($this->where('email', $data['email'])) {
+                    $this->errors['email'] = "Email already exists!";
                 }
 
                 $role = ['student', 'receptionist', 'lecturer', 'admin', 'super_admin'];
@@ -81,7 +88,7 @@ class User extends Model
     public function makeSchoolId($data)
     {
         if (!isset($_SESSION['USER']->school_id)) {
-            $data['school_id'] = $_SESSION['USER']->school_id;
+            $data['school_id'] = $this->randomString(60);
         }
 
         return $data;
