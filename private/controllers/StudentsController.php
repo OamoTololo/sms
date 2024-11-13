@@ -5,7 +5,7 @@
  * @author      Oamogetswe Mgidi
  * @copyright   Copyright (c) NtwanaSosha
  */
-class StudentController extends Controller
+class StudentsController extends Controller
 {
     public function index($id = null)
     {

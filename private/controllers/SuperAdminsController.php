@@ -1,6 +1,6 @@
 <?php
 
-class SuperAdminController extends Controller
+class SuperAdminsController extends Controller
 {
     public function index()
     {

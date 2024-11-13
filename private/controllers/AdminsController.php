@@ -1,6 +1,6 @@
 <?php
 
-class AdminController Extends Controller
+class AdminsController Extends Controller
 {
     public function index()
     {

@@ -5,7 +5,7 @@
  * @author      Oamogetswe Mgidi
  * @copyright   Copyright (c) NtwanaSosha
  */
-class ProfileController extends Controller
+class ProfilesController extends Controller
 {
     public function index($id = null)
     {
