@@ -9,13 +9,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //$user = new User;
         try {
             if (!Auth::loggedIn()) {
                 $this->redirect('/LoginController');
             }
             $user = new User;
-
             $data = $user->findAll();
 
             $this->view('HomeView', ['rows' => $data]);
